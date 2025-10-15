@@ -7,6 +7,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 import { store } from "./app/store"; // Import Redux store;
 import theme from "./app/MaterialTheme/index";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
@@ -19,7 +20,9 @@ root.render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <App />
+        <Router>
+          <App />
+        </Router>
       </ThemeProvider>
     </Provider>
   </React.StrictMode>

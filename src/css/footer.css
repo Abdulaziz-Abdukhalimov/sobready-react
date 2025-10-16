@@ -1,0 +1,147 @@
+/* Main wrapper */
+.footer {
+  width: 100%;
+  background-color: #122717; /* Your brand color */
+  color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  font-family: "Inter", sans-serif;
+}
+
+/* Footer container layout */
+.footer-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Left column */
+.footer-left {
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Brand name */
+.brand-name {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #d4a353; /* soft gold tone */
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+/* Newsletter title */
+.foot-desc-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+/* Newsletter text */
+.foot-desc-txt {
+  font-size: 14px;
+  color: #d3d3d3;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+/* Contact info */
+.find-us {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e8e8e8;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+/* Social icons */
+.sns-context {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.sns-context img {
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sns-context img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/* Right side layout (columns) */
+.footer-right {
+  display: flex;
+  gap: 90px;
+}
+
+/* Section titles (Categories, Shopping, etc.) */
+.foot-category-title {
+  font-weight: 600;
+  font-size: 15px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+/* Section links/text */
+.foot-category {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.foot-category a,
+.foot-category p,
+.foot-category .MuiTypography-root {
+  font-size: 14px;
+  color: #cfcfcf;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.foot-category a:hover,
+.foot-category p:hover,
+.foot-category .MuiTypography-root:hover {
+  color: #d4a353; /* gold hover */
+}
+
+/* Divider line */
+.footer-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  margin-top: 70px;
+}
+
+/* Copyright text */
+.copyright-txt {
+  text-align: center;
+  font-size: 13px;
+  color: #bfbfbf;
+  margin-top: 25px;
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .footer-details {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .footer-right {
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+
+  .footer-left {
+    width: 100%;
+  }
+}

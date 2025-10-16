@@ -1,0 +1,97 @@
+.home-navbar {
+  width: 100%;
+  height: 52px;
+  color: #ffff;
+  font-family: "Inter", sans-serif;
+  position: sticky;
+  top: 15px;
+  z-index: 999;
+}
+
+/* Container inside navbar */
+.home-navbar .MuiContainer-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Logo section */
+.home-navbar h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #c69b3e; /* gold color */
+  letter-spacing: 0.5px;
+  margin: 0;
+  padding-right: 10px;
+}
+
+/* Navigation links */
+.home-navbar a {
+  text-decoration: none;
+  color: #ab8e66;
+  font-size: 15px;
+  font-weight: 400;
+  transition: color 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+/* Hover underline animation */
+.hover-line a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #ab8e66;
+  transition: width 0.3s ease;
+}
+
+.hover-line a:hover::after {
+  width: 100%;
+}
+
+/* Active link underline */
+a.underline::after {
+  width: 100%;
+}
+
+/* Icons */
+.home-navbar img {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.home-navbar img:hover {
+  opacity: 0.7;
+}
+
+/* Login button */
+.home-navbar .MuiButton-root {
+  border-radius: 20px;
+  padding: 6px 18px;
+  font-size: 14px;
+  text-transform: none;
+  background-color: #304835 !important;
+  color: #fff !important;
+  box-shadow: none;
+  transition: background-color 0.3s ease;
+}
+
+.home-navbar .MuiButton-root:hover {
+  background-color: #304835 !important;
+}
+
+/* Layout spacing */
+.home-navbar .MuiStack-root {
+  align-items: center;
+}
+
+.home-navbar .MuiStack-root > .MuiBox-root {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

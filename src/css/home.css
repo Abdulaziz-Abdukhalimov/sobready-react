@@ -1,0 +1,82 @@
+.home-page {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-container {
+  max-width: 1300px;
+  padding: 60px 20px;
+}
+
+.home-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+
+/* LEFT SIDE TEXT */
+.home-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 40px;
+}
+
+.home-title {
+  width: 752px;
+  font-family: "Satoshi Variable";
+  font-size: 48px;
+  font-weight: 300;
+  color: #333;
+  line-height: 67px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.home-subtext {
+  font-size: 18px;
+  color: #555;
+  line-height: normal;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+/* BUTTON */
+.home-btn {
+  width: 140px;
+  height: 50px;
+  background-color: #b47b3d !important;
+  color: #fff !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  border-radius: 10px !important;
+  padding: 30px 30px !important;
+  text-transform: none !important;
+  box-shadow: none !important;
+  transition: background-color 0.3s ease;
+}
+
+.home-btn:hover {
+  background-color: #9b6833 !important;
+}
+
+/* RIGHT SIDE IMAGE */
+.home-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  padding-bottom: 150px;
+}
+
+.home-image img {
+  width: 430px;
+  height: 769px;
+  object-fit: cover;
+  background: none;
+}

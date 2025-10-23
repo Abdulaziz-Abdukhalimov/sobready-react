@@ -1,5 +1,7 @@
 import { Box, Button, Container, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 export function OtherNavbar() {
   const authmember = null;
@@ -55,13 +57,13 @@ export function OtherNavbar() {
 
             <Box className={"hover-line"}>
               <NavLink to="/help" activeClassName={"underline"}>
-                <img src="/icons/Heart.svg" alt="favorite" />
+                <FavoriteBorderIcon />
               </NavLink>
             </Box>
 
             <Box className={"hover-line"}>
               <NavLink to="/help" activeClassName={"underline"}>
-                <img src="/icons/Handbag.svg" alt="cart" />
+                <LocalMallIcon />
               </NavLink>
             </Box>
 
@@ -83,7 +85,6 @@ export function OtherNavbar() {
             )}
           </Stack>
         </Stack>
-        <Stack> Aromatica Details </Stack>
       </Container>
     </div>
   );

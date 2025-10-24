@@ -8,7 +8,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { store } from "./app/store"; // Import Redux store;
 import theme from "./app/MaterialTheme/index";
 import { BrowserRouter as Router } from "react-router-dom";
-
+import ContextProvider from "./app/context/ContextProvider";
 const rootElement = document.getElementById("root");
 if (!rootElement) {
   throw new Error("Root element not found");
@@ -18,12 +18,14 @@ const root = createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Router>
-          <App />
-        </Router>
-      </ThemeProvider>
+      <ContextProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Router>
+            <App />
+          </Router>
+        </ThemeProvider>
+      </ContextProvider>
     </Provider>
   </React.StrictMode>
 );

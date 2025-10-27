@@ -115,29 +115,139 @@
   font-weight: 400;
   line-height: normal;
 }
-/* best sellins */
+/* ============ BEST SELLING SECTION ============ */
 .home-page .best-selling {
+  width: 100%;
+  background-color: #fff;
+  padding: 80px 0;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 55px;
 }
+
+.home-page .best-selling .bestsell-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Title */
 .home-page .best-selling .best-title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
   text-align: center;
-  padding-bottom: 50px;
+  color: #111;
+  margin-bottom: 50px;
 }
+
+/* Card container */
 .home-page .best-selling .best-cards {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
-  gap: 37px;
-  margin-bottom: 40px;
+  gap: 40px;
 }
+
+/* ============ CARD ============ */
 .home-page .best-selling .card {
-  background-color: #123712;
-  width: 260px;
-  height: 442px;
-  flex-shrink: 0;
+  position: relative;
+  width: 306px;
+  height: 408px;
+  border-radius: 0;
+  border: none;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.home-page .best-selling .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+.home-page .best-selling .card .product-label {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #111;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 5;
+}
+.home-page .best-selling .card:hover .product-label {
+  border-color: #aaa;
+}
+
+/* Product image */
+.home-page .best-selling .card img {
+  width: 266px;
+  height: 303px;
+  height: auto;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+
+/* Product info section */
+.home-page .best-selling .card-info {
+  width: 286px;
+  height: 73px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.home-page .best-selling .product-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.home-page .best-selling .product-shortInfo {
+  font-size: 13px;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+  margin-top: -25px;
+}
+
+.home-page .best-selling .product-shortInfo span:first-child {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.home-page .best-selling .card-info > div,
+.card-info > box {
+  font-size: 14px;
+}
+
+/* Product price */
+.home-page .best-selling .card-info .product-shortInfo .price {
+  font-size: 15px;
+  color: #111;
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+/* Empty message */
+.home-page .best-selling .no-data {
+  text-align: center;
+  font-size: 16px;
+  color: #777;
+  padding: 40px 0;
 }

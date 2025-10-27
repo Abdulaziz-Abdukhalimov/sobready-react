@@ -10,6 +10,7 @@ export interface Product {
   _id: string;
   productStatus: ProductStatus;
   productFragrance: ProductFragrance;
+  productType: ProductType;
   productName: string;
   productBrand: string;
   productPrice: number;

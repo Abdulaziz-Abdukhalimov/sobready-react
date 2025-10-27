@@ -1,15 +1,77 @@
-import { Container, Stack } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
+import { retrievePopularProducts } from "./selector";
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import { serverApi } from "../../../lib/config";
+import { CssVarsProvider } from "@mui/joy/styles";
+import Card from "@mui/joy/Card";
+import CardContent from "@mui/joy/CardContent";
+import CardOverflow from "@mui/joy/CardOverflow";
+import Typography from "@mui/joy/Typography";
+import CardCover from "@mui/joy/CardCover";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+
+//REDUX SElECTOR
+const popularProductsRetriever = createSelector(
+  retrievePopularProducts,
+  (popularProducts) => ({ popularProducts })
+);
 
 export default function BestSellings() {
+  const { popularProducts } = useSelector(popularProductsRetriever);
   return (
     <div className="best-selling">
-      <Container className="bestSell-container">
-        <Stack className="best-title">Best Sellings</Stack>
-        <Stack className="best-cards">
-          <Stack className="card">1</Stack>
-          <Stack className="card">2</Stack>
-          <Stack className="card">3</Stack>
-          <Stack className="card">4</Stack>
+      <Container>
+        <Stack className="bestsell-section">
+          <Box className="best-title"> Best Selling Products</Box>
+          <Stack className="best-cards">
+            {popularProducts.length !== 0 ? (
+              popularProducts.map((product) => {
+                const imagePath = `${serverApi}/${product.productImages[0]}`;
+                return (
+                  <CssVarsProvider key={product._id}>
+                    <Card className="card">
+                      <Box className="product-label">
+                        {product.productGender}
+                      </Box>
+
+                      <CardCover>
+                        <img src={imagePath} alt="" />
+                      </CardCover>
+                      <CardCover className="card-cover" />
+                      <CardContent sx={{ justifyContent: "flex-end" }}>
+                        <Stack
+                          flexDirection={"row"}
+                          justifyContent={"space-between"}
+                        >
+                          <CardOverflow>
+                            <Stack className="card-info">
+                              <Typography className="product-name">
+                                {product.productName}
+                              </Typography>
+                              <Box className="product-shortInfo">
+                                <span>{product.productBrand}</span>
+                                <span>
+                                  {product.productType.toLocaleLowerCase()} (
+                                  {product.productVolume})
+                                </span>
+                              </Box>
+                              <Box className={"price"}>
+                                $ {product.productPrice}
+                              </Box>
+                            </Stack>
+                          </CardOverflow>
+                        </Stack>
+                      </CardContent>
+                    </Card>
+                  </CssVarsProvider>
+                );
+              })
+            ) : (
+              <Box className="no-data">Products are not available now </Box>
+            )}
+          </Stack>
         </Stack>
       </Container>
     </div>

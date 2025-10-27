@@ -10,6 +10,8 @@ import MemberService from "../../services/MemberService";
 import { Member } from "../../../lib/types/member";
 import { useEffect } from "react";
 import { setNewProducts, setPopularProducts, setTopUsers } from "./slice";
+import Advertisement from "./Advertisement";
+import NewProducts from "./NewProducts";
 
 // REDUX SLICE & SELCTOR //
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -60,6 +62,8 @@ export function HomePage() {
       <Banner />
       <OurValues />
       <BestSellings />
+      <Advertisement />
+      <NewProducts />
     </div>
   );
 }

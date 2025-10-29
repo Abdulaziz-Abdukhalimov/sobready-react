@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { setNewProducts, setPopularProducts, setTopUsers } from "./slice";
 import Advertisement from "./Advertisement";
 import NewProducts from "./NewProducts";
+import Events from "./Events";
 
 // REDUX SLICE & SELCTOR //
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -64,6 +65,7 @@ export function HomePage() {
       <BestSellings />
       <Advertisement />
       <NewProducts />
+      <Events />
     </div>
   );
 }

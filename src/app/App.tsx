@@ -1,5 +1,4 @@
 import { Route, Switch, useLocation } from "react-router-dom";
-import { ProductsPage } from "./screens/productsPage";
 import { OrdersPage } from "./screens/ordersPage";
 import { UserPage } from "./screens/userPage";
 import { HomePage } from "./screens/homePage";
@@ -17,6 +16,7 @@ import MemberService from "./services/MemberService";
 import { sweetErrorHandling, sweetTopSuccessAlert } from "../lib/sweetAlert";
 import { Messages } from "../lib/config";
 import AuthenticationModal from "./components/auth";
+import ProductsPage from "./screens/productsPage";
 
 function App() {
   const location = useLocation();

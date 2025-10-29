@@ -6,6 +6,7 @@ import {
 import reduxLogger from "redux-logger";
 import HomePageReducer from "./screens/homePage/slice";
 import CartReducer from "./cartStore/slice";
+import ProductsPageReducer from "./screens/productsPage/slice";
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -13,6 +14,7 @@ export const store = configureStore({
     getDefaultMiddleware().concat(reduxLogger),
   reducer: {
     homePage: HomePageReducer,
+    productsPage: ProductsPageReducer,
     cart: CartReducer,
   },
 });

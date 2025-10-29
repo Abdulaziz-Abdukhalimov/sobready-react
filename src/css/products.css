@@ -1,0 +1,182 @@
+.products-page {
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+.products {
+  width: 100%;
+  height: auto;
+  padding: 60px 0;
+}
+
+.products .best-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+}
+
+.products .filter-row {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.products .filter-group span,
+.sort-group span {
+  font-size: 15px;
+  font-weight: 500;
+  margin-right: 12px;
+}
+
+.products .filter-select {
+  min-width: 160px;
+  margin-right: 12px;
+  background-color: #fff;
+  border: none;
+}
+.products .filter-select .MuiOutlinedInput-notchedOutline {
+  border: none;
+}
+
+.products .filter-select:hover .MuiOutlinedInput-notchedOutline {
+  border: none;
+}
+
+.products .filter-select.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border: none;
+}
+
+/* Product Grid Container */
+/* Card container */
+.products .product-grid {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  background-color: #fff;
+}
+
+/* ============ CARD ============ */
+.products .product-grid .card {
+  position: relative;
+  width: 260px;
+  height: 408px;
+  border-radius: 0;
+  border: none;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 20px;
+}
+
+.products .product-grid .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.products .product-grid .card .product-label {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #111;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 5;
+}
+
+.products .product-grid .card:hover .product-label {
+  border-color: #aaa;
+}
+
+/* Product image */
+.products .product-grid .card img {
+  width: 266px;
+  height: 303px;
+  height: auto;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+
+/* Product info section */
+.products .product-grid .card-info {
+  width: 286px;
+  height: 73px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-right: 35px;
+  padding-top: 10px;
+}
+
+.products .product-grid .product-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.products .product-grid .product-shortInfo {
+  font-size: 13px;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.4;
+  margin-top: -25px;
+}
+
+.products .product-grid .product-shortInfo span:first-child {
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.products .product-grid .card-info > div,
+.product-grid .card-info > box {
+  font-size: 14px;
+}
+
+/* Product price */
+.products .product-grid .price {
+  font-size: 15px;
+  color: #111;
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+/* Empty message */
+.products .product-grid .no-data {
+  text-align: center;
+  font-size: 26px;
+  color: #777;
+  padding: 40px 0;
+}
+.products .product-grid .add-like-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 28px;
+}
+.products .product-grid .add-like-section .like {
+  color: goldenrod;
+}
+.products .product-grid .add-like-section .add-cart {
+  color: goldenrod;
+}

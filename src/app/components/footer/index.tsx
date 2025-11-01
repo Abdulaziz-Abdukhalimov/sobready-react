@@ -19,7 +19,7 @@ export default function Footer() {
             style={{ width: "340px" }}
             className="footer-left"
           >
-            <Box className="brand-name">AROMATICA</Box>
+            <Box className="brand-name">SEPHORA</Box>
             <Box className={"foot-desc-title"}>
               Subscribe to Our Newsletter:
             </Box>

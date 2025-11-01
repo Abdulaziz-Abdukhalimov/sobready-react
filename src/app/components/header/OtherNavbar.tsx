@@ -32,7 +32,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
   } = props;
   const { authMember } = useGlobals();
   return (
-    <div className="home-navbar">
+    <div className="other-navbar">
       <Container sx={{ mt: "55px", height: "642pxpx" }}>
         <Stack
           sx={{ height: "50px" }}
@@ -42,7 +42,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
         >
           <Box>
             <NavLink to="/">
-              <h2>AROMATICA</h2>
+              <h2>SEPHORA</h2>
             </NavLink>
           </Box>
           <Stack

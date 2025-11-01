@@ -40,7 +40,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
         <Stack flexDirection={"row"} justifyContent={"space-between"}>
           <Box>
             <NavLink to="/">
-              <h2>AROMATICA</h2>
+              <h2>SEPHORA</h2>
             </NavLink>
           </Box>
           <Stack

@@ -8,6 +8,8 @@ import {
   MenuItem,
   Select,
   Typography,
+  Input,
+  Button,
 } from "@mui/material";
 import ProductService from "../../services/ProductService";
 import { useHistory } from "react-router-dom";
@@ -28,11 +30,8 @@ import CardOverflow from "@mui/joy/CardOverflow";
 import CardCover from "@mui/joy/CardCover";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import Pagination from "@mui/material/Pagination";
-import PaginationItem from "@mui/material/PaginationItem";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ClearIcon from "@mui/icons-material/Clear";
+import SearchIcon from "@mui/icons-material/Search";
 
 // === REDUX SETUP === //
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -52,7 +51,7 @@ export default function Products() {
   // === FILTER STATES === //
   const [productSearch, setProductSearch] = useState<ProductInquiry>({
     page: 1,
-    limit: 8,
+    limit: 16,
     order: "productPrice",
     //@ts-ignore
     productType: "",
@@ -104,6 +103,10 @@ export default function Products() {
   const handleSortChange = (e: any) => {
     productSearch.page = 1;
     productSearch.order = e.target.value;
+    setProductSearch({ ...productSearch });
+  };
+  const searchProductHandler = () => {
+    productSearch.search = searchText;
     setProductSearch({ ...productSearch });
   };
 
@@ -176,6 +179,53 @@ export default function Products() {
             </Box>
 
             <Box className="sort-group">
+              <Stack flexDirection={"row"}>
+                <div
+                  style={{
+                    position: "relative",
+                    width: "260px",
+                    marginBottom: "50px",
+                  }}
+                >
+                  <input
+                    type={"search"}
+                    name={"singleSearch"}
+                    placeholder="Type here.."
+                    className="search-bar"
+                    value={searchText}
+                    onChange={(e) => {
+                      setSearchText(e.target.value);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") searchProductHandler();
+                    }}
+                  />
+                  {searchText && (
+                    <Button
+                      onClick={() => setSearchText("")}
+                      sx={{
+                        position: "absolute",
+                        right: "90px", // search button oldida chiqadi
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        background: "transparent",
+                        border: "none",
+                        cursor: "pointer",
+                        fontSize: "7px",
+                      }}
+                    >
+                      <ClearIcon sx={{ fontSize: "13px" }} />
+                    </Button>
+                  )}
+                  <Button
+                    variant="contained"
+                    className="search-button"
+                    onClick={searchProductHandler}
+                  >
+                    Search <SearchIcon sx={{ marginLeft: "5px" }} />
+                  </Button>
+                </div>
+              </Stack>
               <span>Sort by</span>
               <Select
                 value={productSearch.order}
@@ -245,7 +295,14 @@ export default function Products() {
                         />
                         <LocalMallIcon
                           onClick={(e) => {
-                            e.stopPropagation(); // prevent card click
+                            onAdd({
+                              _id: product._id,
+                              quantity: 1,
+                              name: product.productName,
+                              price: product.productPrice,
+                              image: product.productImages[0],
+                            });
+                            e.stopPropagation();
                           }}
                           className="add-cart"
                         />
@@ -260,6 +317,22 @@ export default function Products() {
           )}
         </Stack>
       </Container>
+      <div className="partners-section">
+        <Container>
+          <Box className="logo-title">Brands we partner with</Box>
+          <Stack className="logo-cards">
+            <Stack className="card">
+              <img src="/img/diorPartner.jpg" alt="" />
+            </Stack>
+            <Stack className="card">
+              <img src="/img/bulgariPartner.jpg" alt="" />
+            </Stack>
+            <Stack className="card">
+              <img src="/img/chanelPartner.jpg" alt="" />
+            </Stack>
+          </Stack>
+        </Container>
+      </div>
     </div>
   );
 }

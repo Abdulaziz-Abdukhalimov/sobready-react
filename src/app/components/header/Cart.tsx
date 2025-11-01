@@ -49,26 +49,35 @@ export default function Cart() {
   const shippingCost: number = itemPrice < 1000 ? 30 : 0;
   const totalPrice = (itemPrice + shippingCost).toFixed(1);
 
-  const [open, setOpen] = React.useState(false);
-  const toggleDrawer = (newOpen: boolean) => () => setOpen(newOpen);
+  const [open, setOpen] = React.useState<null | HTMLElement>(null);
+
+  /** HANDLERS **/
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setOpen(e.currentTarget);
+  };
+  const handleClose = () => {
+    setOpen(null);
+  };
 
   const proceedOrderHandler = async () => {
     try {
+      handleClose();
       if (!authMember) throw new Error(Messages.error2);
       const order = new OrderService();
       await order.createOrder(cartItems);
+
       onDeleteAll();
       setOrderBuilder(new Date());
       history.push("/orders");
-      setOpen(false);
     } catch (err) {
+      console.log("err");
       sweetErrorHandling(err).then();
     }
   };
 
   return (
     <Box>
-      <IconButton onClick={toggleDrawer(true)}>
+      <IconButton onClick={handleClick}>
         <Badge badgeContent={cartItems.length} color="secondary">
           <LocalMallIcon sx={{ color: "#ab8e66" }} />
         </Badge>
@@ -76,14 +85,14 @@ export default function Cart() {
 
       <Drawer
         anchor="right"
-        open={open}
-        onClose={toggleDrawer(false)}
+        open={Boolean(open)}
+        onClose={handleClose}
         classes={{ paper: "cart-drawer" }}
       >
         <Stack className="cart-container">
           <Box className="cart-header">
             <h2>Shopping Bag</h2>
-            <Button onClick={toggleDrawer(false)} className="close-btn">
+            <Button onClick={handleClose} className="close-btn">
               X
             </Button>
           </Box>
@@ -139,6 +148,22 @@ export default function Cart() {
                 <strong>Total</strong>
                 <strong>${totalPrice}</strong>
               </div>
+              <Button
+                startIcon={<DeleteSweepIcon />}
+                variant="outlined"
+                className="checkout-btn"
+                onClick={onDeleteAll}
+                sx={{
+                  color: "#ab8e66",
+                  borderColor: "#ab8e66",
+                  "&:hover": {
+                    borderColor: "#8b6e46",
+                    backgroundColor: "rgba(171, 142, 102, 0.04)",
+                  },
+                }}
+              >
+                Clear All
+              </Button>
               <Button
                 startIcon={<ShoppingCartIcon />}
                 variant="contained"

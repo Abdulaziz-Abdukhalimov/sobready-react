@@ -15,6 +15,7 @@ import { useGlobals } from "../../hooks/useGlobals";
 import { serverApi } from "../../../lib/config";
 import Cart from "./Cart";
 import CartDrawer from "./Cart";
+import WishList from "./Like";
 
 interface HomeNavbarProps {
   setSignupOpen: (isOpen: boolean) => void;
@@ -50,7 +51,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
             minWidth={"700px"}
           >
             <Box className={"hover-line"}>
-              <NavLink to="/" activeClassName={"underline"}>
+              <NavLink to="/" exact activeClassName={"underline"}>
                 Home
               </NavLink>
             </Box>
@@ -80,7 +81,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
             </Box>
 
             {/* Wishlist */}
-
+            <WishList />
             {/* cart */}
             <Cart />
             {!authMember ? (

@@ -1,5 +1,6 @@
 // REACT APP STATE.    //
 
+import { Like, LikeItem } from "./Likes";
 import { Member } from "./member";
 import { Order } from "./order";
 import { Product } from "./product";
@@ -9,6 +10,7 @@ export interface AppRootState {
   homePage: HomePageState;
   productsPage: ProductsPageState;
   cart: CartItems;
+  like: LikeItems;
   ordersPage: OrdersPageState;
 }
 
@@ -34,4 +36,8 @@ export interface OrdersPageState {
 //CART ITEMS
 export interface CartItems {
   cartItems: CartItem[];
+}
+//LIKE ITEMS
+export interface LikeItems {
+  likeItems: LikeItem[];
 }

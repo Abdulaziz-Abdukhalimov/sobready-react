@@ -1,0 +1,351 @@
+/* ============ ORDERS PAGE ============ */
+.order-page {
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 60px 0;
+  font-family: "Inter", sans-serif;
+}
+
+.order-page .order-container {
+  max-width: 1400px !important;
+}
+
+.order-page .order-page-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 30px;
+  font-family: "Playfair Display", serif;
+}
+
+/* ============ TABS ============ */
+.order-page .order-tabs-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.order-page .order-tabs {
+  border-bottom: none !important;
+}
+
+.order-page .order-tabs .MuiTab-root {
+  text-transform: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+  padding: 20px 30px;
+  transition: all 0.3s ease;
+}
+
+.order-page .order-tabs .MuiTab-root.Mui-selected {
+  color: #ab8e66;
+  font-weight: 600;
+}
+
+.order-page .order-tabs .MuiTabs-indicator {
+  background-color: #ab8e66;
+  height: 3px;
+}
+
+/* ============ ORDER CARD ============ */
+.order-page .order-card {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  transition: box-shadow 0.3s ease;
+}
+
+.order-page .order-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* ============ LEFT SIDE - ORDER ITEMS ============ */
+.order-page .order-card-left {
+  border-right: 1px solid #e8e8e8;
+  padding-right: 30px;
+}
+
+.order-page .order-section-title {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #1a1a1a;
+  margin-bottom: 20px !important;
+  font-family: "Playfair Display", serif !important;
+}
+
+.order-page .order-header-with-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.order-page .order-status-chip {
+  font-weight: 500 !important;
+  padding: 4px 12px !important;
+}
+
+.order-page .order-status-chip.processing {
+  background-color: #fff3cd !important;
+  color: #856404 !important;
+}
+
+.order-page .order-status-chip.completed {
+  background-color: #d4edda !important;
+  color: #155724 !important;
+}
+
+.order-items-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.order-page .order-items-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.order-page .order-items-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.order-page .order-items-list::-webkit-scrollbar-thumb {
+  background: #ab8e66;
+  border-radius: 10px;
+}
+
+/* ============ ORDER ITEM ROW ============ */
+.order-page .order-item-row {
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.order-page .order-item-row:hover {
+  background: #f0f0f0;
+}
+
+.order-page .order-item-image {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.order-page .order-item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.order-page .order-item-name {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #1a1a1a !important;
+  margin-bottom: 4px !important;
+}
+
+.order-page .order-item-brand {
+  font-size: 14px !important;
+  color: #666 !important;
+  margin-bottom: 2px !important;
+}
+
+.order-page .order-item-type {
+  font-size: 13px !important;
+  color: #999 !important;
+}
+
+.order-page .order-item-pricing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  min-width: 100px;
+}
+
+.order-item-price {
+  font-size: 15px !important;
+  color: #666 !important;
+}
+
+.order-page .order-item-quantity {
+  font-size: 13px !important;
+  color: #999 !important;
+  margin: 4px 0 !important;
+}
+
+.order-page .order-item-total {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #ab8e66 !important;
+}
+
+/* ============ RIGHT SIDE - ORDER SUMMARY ============ */
+.order-page .order-card-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-page .order-summary {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.order-page .order-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #555;
+}
+
+.order-page .order-summary-row:last-child {
+  margin-bottom: 0;
+}
+
+.order-page .order-summary-divider {
+  height: 1px;
+  background: #d0d0d0;
+  margin: 15px 0;
+}
+
+.order-page .order-summary-row.order-total {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+  margin-top: 10px;
+}
+
+.order-page .order-summary-row.order-total .MuiTypography-root {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #ab8e66 !important;
+}
+
+.order-page .order-date {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.order-page .order-date .MuiTypography-root {
+  color: #999 !important;
+  font-size: 13px !important;
+}
+
+/* ============ ORDER ACTIONS ============ */
+.order-page .order-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.order-page .order-cancel-btn {
+  border-color: #dc3545 !important;
+  color: #dc3545 !important;
+  padding: 12px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.order-page .order-cancel-btn:hover {
+  background-color: #dc3545 !important;
+  color: #fff !important;
+}
+
+.order-page .order-payment-btn {
+  background-color: #ab8e66 !important;
+  color: #fff !important;
+  padding: 12px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.order-page .order-payment-btn:hover {
+  background-color: #8b6e46 !important;
+}
+
+.order-page .order-received-btn {
+  background-color: #28a745 !important;
+  color: #fff !important;
+  padding: 12px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.order-page .order-received-btn:hover {
+  background-color: #218838 !important;
+}
+
+/* ============ COMPLETED ORDER BADGE ============ */
+.order-page .order-completed-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #d4edda;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.order-page .order-completed-badge .completed-icon {
+  color: #28a745;
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.order-page .order-completed-badge .MuiTypography-root {
+  color: #155724;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* ============ EMPTY STATE ============ */
+.order-page .order-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.order-page .empty-state-image {
+  width: 250px;
+  height: 250px;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+.order-page .empty-state-text {
+  font-size: 18px !important;
+  color: #999 !important;
+  font-weight: 500 !important;
+}

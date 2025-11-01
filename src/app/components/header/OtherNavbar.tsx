@@ -12,6 +12,7 @@ import { NavLink } from "react-router-dom";
 import { useGlobals } from "../../hooks/useGlobals";
 import { serverApi } from "../../../lib/config";
 import Cart from "./Cart";
+import WishList from "./Like";
 
 interface OtherNavbarProps {
   setSignupOpen: (isOpen: boolean) => void;
@@ -82,7 +83,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
             </Box>
 
             {/* Wishlist */}
-
+            <WishList />
             {/* cart */}
             <Cart />
             {!authMember ? (

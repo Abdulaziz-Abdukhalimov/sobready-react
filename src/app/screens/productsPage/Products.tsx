@@ -16,7 +16,9 @@ import { useHistory } from "react-router-dom";
 import { Product, ProductInquiry } from "../../../lib/types/product";
 import { setProducts } from "./slice";
 import { onAdd } from "../../cartStore/slice";
+import { toggleLike } from "../../likeStore/slice"; // ADD THIS
 import { retrieveProducts } from "./selector";
+import { retrieveLikeItems } from "../../likeStore/selector"; // ADD THIS
 import {
   ProductFragrance,
   ProductGender,
@@ -37,15 +39,21 @@ import SearchIcon from "@mui/icons-material/Search";
 const actionDispatch = (dispatch: Dispatch) => ({
   setProducts: (data: Product[]) => dispatch(setProducts(data)),
   onAdd: (data: any) => dispatch(onAdd(data)),
+  toggleLike: (data: any) => dispatch(toggleLike(data)), // ADD THIS
 });
 
-const productsRetriever = createSelector(retrieveProducts, (products) => ({
-  products,
-}));
+const productsRetriever = createSelector(
+  retrieveProducts,
+  retrieveLikeItems, // ADD THIS
+  (products, likeItems) => ({
+    products,
+    likeItems, // ADD THIS
+  })
+);
 
 export default function Products() {
-  const { setProducts, onAdd } = actionDispatch(useDispatch());
-  const { products } = useSelector(productsRetriever);
+  const { setProducts, onAdd, toggleLike } = actionDispatch(useDispatch()); // ADD toggleLike
+  const { products, likeItems } = useSelector(productsRetriever); // ADD likeItems
   const history = useHistory();
 
   // === FILTER STATES === //
@@ -63,6 +71,11 @@ export default function Products() {
   });
 
   const [searchText, setSearchText] = useState<string>("");
+
+  // === HELPER FUNCTION TO CHECK IF PRODUCT IS LIKED === //
+  const isLiked = (productId: string): boolean => {
+    return likeItems.some((item: any) => item._id === productId);
+  };
 
   // === FETCH PRODUCTS === //
   useEffect(() => {
@@ -105,6 +118,7 @@ export default function Products() {
     productSearch.order = e.target.value;
     setProductSearch({ ...productSearch });
   };
+
   const searchProductHandler = () => {
     productSearch.search = searchText;
     setProductSearch({ ...productSearch });
@@ -117,6 +131,21 @@ export default function Products() {
 
   const chooseProductHandler = (id: string) => {
     history.push(`/products/${id}`);
+  };
+
+  // === LIKE HANDLER === //
+  const handleLikeClick = (product: Product) => {
+    const likeItem = {
+      _id: product._id,
+      productName: product.productName,
+      productImages: product.productImages,
+      productPrice: product.productPrice,
+      productVolume: product.productVolume,
+      productBrand: product.productBrand, // optional, if you want to show brand
+      productType: product.productType, // optional
+      productGender: product.productGender, // optional
+    };
+    toggleLike(likeItem);
   };
 
   // === RENDER === //
@@ -205,7 +234,7 @@ export default function Products() {
                       onClick={() => setSearchText("")}
                       sx={{
                         position: "absolute",
-                        right: "90px", // search button oldida chiqadi
+                        right: "90px",
                         top: "50%",
                         transform: "translateY(-50%)",
                         background: "transparent",
@@ -250,6 +279,8 @@ export default function Products() {
           {products.length !== 0 ? (
             products.map((product) => {
               const imagePath = `${serverApi}/${product.productImages[0]}`;
+              const liked = isLiked(product._id); // CHECK IF LIKED
+
               return (
                 <CssVarsProvider key={product._id}>
                   <Card
@@ -290,8 +321,13 @@ export default function Products() {
                         <FavoriteIcon
                           onClick={(e) => {
                             e.stopPropagation(); // prevent card click
+                            handleLikeClick(product); // TOGGLE LIKE
                           }}
                           className="like"
+                          sx={{
+                            color: liked ? "red" : "gray", // RED IF LIKED
+                            cursor: "pointer",
+                          }}
                         />
                         <LocalMallIcon
                           onClick={(e) => {

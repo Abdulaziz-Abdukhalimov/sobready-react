@@ -7,6 +7,8 @@ import reduxLogger from "redux-logger";
 import HomePageReducer from "./screens/homePage/slice";
 import CartReducer from "./cartStore/slice";
 import ProductsPageReducer from "./screens/productsPage/slice";
+import LikeReducer from "./likeStore/slice";
+import OrdersPageReducer from "./screens/ordersPage/slice";
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -16,6 +18,8 @@ export const store = configureStore({
     homePage: HomePageReducer,
     productsPage: ProductsPageReducer,
     cart: CartReducer,
+    like: LikeReducer,
+    ordersPage: OrdersPageReducer,
   },
 });
 

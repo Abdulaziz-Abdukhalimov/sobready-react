@@ -1,5 +1,5 @@
 import { Route, Switch, useLocation } from "react-router-dom";
-import { OrdersPage } from "./screens/ordersPage";
+import OrdersPage from "./screens/ordersPage";
 import { UserPage } from "./screens/userPage";
 import { HomePage } from "./screens/homePage";
 import HomeNavbar from "./components/header/HomeNavbar";
@@ -8,6 +8,7 @@ import "../css/app.css";
 import "../css/navbar.css";
 import "../css/home.css";
 import "../css/footer.css";
+import "../css/order.css";
 import OtherNavbar from "./components/header/OtherNavbar";
 import Footer from "./components/footer";
 import { useGlobals } from "./hooks/useGlobals";

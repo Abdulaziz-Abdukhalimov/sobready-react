@@ -4,7 +4,7 @@
   color: #ffff;
   font-family: "Inter", sans-serif;
   position: sticky;
-  top: 15px;
+  top: 25px;
   z-index: 999;
 }
 
@@ -26,35 +26,42 @@
   padding-right: 10px;
 }
 
-/* Navigation links */
+/* Navigation links - NEW UNIQUE STYLE */
 .home-navbar a {
   text-decoration: none;
   color: #ab8e66;
   font-size: 15px;
   font-weight: 400;
-  transition: color 0.3s ease, border-color 0.3s ease;
   position: relative;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
 }
 
-/* Hover underline animation */
-.hover-line a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: #ab8e66;
-  transition: width 0.3s ease;
+/* Hover effect - Gradient background with shadow */
+.hover-line a:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(198, 155, 62, 0.1) 0%,
+    rgba(171, 142, 102, 0.15) 100%
+  );
+  color: #8b6e46;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(171, 142, 102, 0.2);
 }
 
-.hover-line a:hover::after {
-  width: 100%;
+/* Active link - Solid subtle background, no underline */
+a.underline {
+  background: rgba(171, 142, 102, 0.12);
+  color: #8b6e46;
+  font-weight: 500;
 }
 
-/* Active link underline */
+/* Remove the old underline styles */
+.hover-line a::after,
 a.underline::after {
-  width: 100%;
+  display: none;
 }
 
 /* Icons */
@@ -328,35 +335,42 @@ a.underline::after {
   padding-right: 10px;
 }
 
-/* Navigation links */
+/* Navigation links - NEW UNIQUE STYLE */
 .other-navbar a {
   text-decoration: none;
   color: #ab8e66;
   font-size: 15px;
   font-weight: 400;
-  transition: color 0.3s ease, border-color 0.3s ease;
   position: relative;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
 }
 
-/* Hover underline animation */
-.hover-line a::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: #ab8e66;
-  transition: width 0.3s ease;
+/* Hover effect - Gradient background with shadow */
+.hover-line a:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(198, 155, 62, 0.1) 0%,
+    rgba(171, 142, 102, 0.15) 100%
+  );
+  color: #8b6e46;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(171, 142, 102, 0.2);
 }
 
-.hover-line a:hover::after {
-  width: 100%;
+/* Active link - Solid subtle background, no underline */
+a.underline {
+  background: rgba(171, 142, 102, 0.12);
+  color: #8b6e46;
+  font-weight: 500;
 }
 
-/* Active link underline */
+/* Remove the old underline styles */
+.hover-line a::after,
 a.underline::after {
-  width: 100%;
+  display: none;
 }
 
 /* Icons */

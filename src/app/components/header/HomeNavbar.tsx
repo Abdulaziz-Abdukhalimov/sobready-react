@@ -14,6 +14,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useGlobals } from "../../hooks/useGlobals";
 import { serverApi } from "../../../lib/config";
 import Cart from "./Cart";
+import CartDrawer from "./Cart";
 
 interface HomeNavbarProps {
   setSignupOpen: (isOpen: boolean) => void;

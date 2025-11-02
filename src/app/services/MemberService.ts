@@ -73,6 +73,7 @@ class MemberService {
       const result = await axios.post(url, {}, { withCredentials: true });
 
       localStorage.removeItem("memberData");
+      window.location.replace("/");
     } catch (error) {
       console.log("err on logout", error);
       throw error;

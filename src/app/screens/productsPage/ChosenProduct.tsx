@@ -3,13 +3,14 @@ import { Product } from "../../../lib/types/product";
 import { setChosenProduct } from "./slice";
 import { CartItem } from "../../../lib/types/search";
 import { onAdd, onRemove } from "../../cartStore/slice";
-import { retrieveChosenProduct } from "./selector";
+import { retrieveChosenProduct, retrieveProducts } from "./selector";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ProductService from "../../services/ProductService";
 import { serverApi } from "../../../lib/config";
 import React, { useState } from "react";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Container,
   Grid,
@@ -31,28 +32,48 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { toggleLike } from "../../likeStore/slice";
+import { retrieveLikeItems } from "../../likeStore/selector";
 
 // REDUX SLICE & SELCTOR //
 const actionDispatch = (dispatch: Dispatch) => ({
   setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
   onAdd: (data: CartItem) => dispatch(onAdd(data)),
   onRemove: (data: CartItem) => dispatch(onRemove(data)),
+  toggleLike: (data: any) => dispatch(toggleLike(data)),
 });
 
 const chosenProductRetriever = createSelector(
   retrieveChosenProduct,
-  (chosenProduct) => ({
+  retrieveLikeItems,
+  (chosenProduct, likeItems) => ({
     chosenProduct,
+    likeItems,
+  })
+);
+const productsRetriever = createSelector(
+  retrieveProducts,
+  retrieveLikeItems,
+  (products, likeItems) => ({
+    products,
+    likeItems,
   })
 );
 
 export default function ChosenProduct() {
   const { productId } = useParams<{ productId: string }>();
-  const { setChosenProduct, onAdd, onRemove } = actionDispatch(useDispatch());
-  const { chosenProduct } = useSelector(chosenProductRetriever);
+  const { setChosenProduct, onAdd, onRemove, toggleLike } = actionDispatch(
+    useDispatch()
+  );
+  const { chosenProduct, likeItems } = useSelector(chosenProductRetriever);
 
   const [quantity, setQuantity] = useState<number>(1);
   const [expanded, setExpanded] = useState<string | false>(false);
+
+  // === HELPER FUNCTION TO CHECK IF PRODUCT IS LIKED === //
+  const isLiked = (productId: string): boolean => {
+    return likeItems.some((item: any) => item._id === productId);
+  };
 
   useEffect(() => {
     const product = new ProductService();
@@ -94,7 +115,27 @@ export default function ChosenProduct() {
     }
   };
 
+  // === LIKE HANDLER === //
+  const handleLikeClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault(); // Optional: prevent default button behavior
+    if (chosenProduct) {
+      const likeItem = {
+        _id: chosenProduct._id,
+        productName: chosenProduct.productName,
+        productImages: chosenProduct.productImages,
+        productPrice: chosenProduct.productPrice,
+        productVolume: chosenProduct.productVolume,
+        productBrand: chosenProduct.productBrand,
+        productType: chosenProduct.productType,
+        productGender: chosenProduct.productGender,
+      };
+      toggleLike(likeItem);
+    }
+  };
+
   if (!chosenProduct) return null;
+  const liked = isLiked(chosenProduct._id);
+
   return (
     <div className="chosen-product">
       <Container className="chosen-container">
@@ -295,6 +336,7 @@ export default function ChosenProduct() {
                 </Box>
 
                 <Button
+                  onClick={handleLikeClick}
                   sx={{
                     borderColor: "#ab8e66",
                     "&:hover": {
@@ -303,8 +345,8 @@ export default function ChosenProduct() {
                     },
                   }}
                 >
-                  Whish list
-                  <FavoriteBorderIcon />
+                  Wish list
+                  {liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                 </Button>
               </Stack>
 

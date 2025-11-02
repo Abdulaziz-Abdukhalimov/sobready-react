@@ -9,6 +9,7 @@ import { Order, OrderItem } from "../../../lib/types/order";
 import { Product } from "../../../lib/types/product";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { retrieveFinishedOrders } from "./selector";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 const finishedOrderRetriever = createSelector(
   retrieveFinishedOrders,
@@ -120,10 +121,9 @@ export default function FinishedOrders() {
         </Stack>
       ) : (
         <Box className="order-empty-state">
-          <img
-            src="/icons/noimage-list.svg"
-            alt="No orders"
+          <AddShoppingCartIcon
             className="empty-state-image"
+            sx={{ color: "#ab8e66" }}
           />
           <Typography className="empty-state-text">
             No completed orders yet

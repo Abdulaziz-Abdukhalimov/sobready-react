@@ -12,6 +12,7 @@ import { OrderStatus } from "../../../lib/enums/order.enum";
 import { useGlobals } from "../../hooks/useGlobals";
 import OrderService from "../../services/OrderService";
 import { retrievePausedOrders } from "./selector";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 const pausedOrderRetriever = createSelector(
   retrievePausedOrders,
@@ -35,7 +36,7 @@ export default function PausedOrders(props: PausedOrdersProps) {
       const orderId = e.target.value;
       const input: OrderUpdateInput = {
         orderId: orderId,
-        orderStatus: OrderStatus.DELETE,
+        orderStatus: OrderStatus.CANCELLED,
       };
 
       const confirmation = window.confirm("Do you want to delete order?");
@@ -56,7 +57,7 @@ export default function PausedOrders(props: PausedOrdersProps) {
       const orderId = e.target.value;
       const input: OrderUpdateInput = {
         orderId: orderId,
-        orderStatus: OrderStatus.PROCESS,
+        orderStatus: OrderStatus.PROCESSING,
       };
 
       const confirmation = window.confirm(
@@ -176,10 +177,9 @@ export default function PausedOrders(props: PausedOrdersProps) {
         </Stack>
       ) : (
         <Box className="order-empty-state">
-          <img
-            src="/icons/noimage-list.svg"
-            alt="No orders"
+          <AddShoppingCartIcon
             className="empty-state-image"
+            sx={{ color: "#ab8e66" }}
           />
           <Typography className="empty-state-text">
             No pending orders

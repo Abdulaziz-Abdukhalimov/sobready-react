@@ -13,6 +13,7 @@ import { sweetErrorHandling } from "../../../lib/sweetAlert";
 import { OrderStatus } from "../../../lib/enums/order.enum";
 import { T } from "../../../lib/types/common";
 import { retrieveProccessOrders } from "./selector";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 const processOrderRetriever = createSelector(
   retrieveProccessOrders,
@@ -36,7 +37,7 @@ export default function ProccessOrders(props: ProcessOrdersProps) {
       const orderId = e.target.value;
       const input: OrderUpdateInput = {
         orderId: orderId,
-        orderStatus: OrderStatus.FINISH,
+        orderStatus: OrderStatus.DELIVERED,
       };
 
       const confirmation = window.confirm("Have you received your order?");
@@ -158,10 +159,9 @@ export default function ProccessOrders(props: ProcessOrdersProps) {
         </Stack>
       ) : (
         <Box className="order-empty-state">
-          <img
-            src="/icons/noimage-list.svg"
-            alt="No orders"
+          <AddShoppingCartIcon
             className="empty-state-image"
+            sx={{ color: "#ab8e66" }}
           />
           <Typography className="empty-state-text">
             No orders in process

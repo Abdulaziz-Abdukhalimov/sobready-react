@@ -39,15 +39,15 @@ import SearchIcon from "@mui/icons-material/Search";
 const actionDispatch = (dispatch: Dispatch) => ({
   setProducts: (data: Product[]) => dispatch(setProducts(data)),
   onAdd: (data: any) => dispatch(onAdd(data)),
-  toggleLike: (data: any) => dispatch(toggleLike(data)), // ADD THIS
+  toggleLike: (data: any) => dispatch(toggleLike(data)),
 });
 
 const productsRetriever = createSelector(
   retrieveProducts,
-  retrieveLikeItems, // ADD THIS
+  retrieveLikeItems,
   (products, likeItems) => ({
     products,
-    likeItems, // ADD THIS
+    likeItems,
   })
 );
 

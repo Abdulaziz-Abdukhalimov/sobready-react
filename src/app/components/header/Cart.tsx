@@ -22,6 +22,7 @@ import { useGlobals } from "../../hooks/useGlobals";
 import OrderService from "../../services/OrderService";
 import { onAdd, onDelete, onDeleteAll, onRemove } from "../../cartStore/slice";
 import { retrieveCartItems } from "../../cartStore/selector";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 const actionDispatch = (dispatch: Dispatch) => ({
   onAdd: (data: CartItem) => dispatch(onAdd(data)),
@@ -91,7 +92,12 @@ export default function Cart() {
       >
         <Stack className="cart-container">
           <Box className="cart-header">
-            <h2>Shopping Bag</h2>
+            <h2>
+              Shopping Bag
+              <LocalMallIcon
+                sx={{ color: "#ab8e66", paddingTop: "8px", fontSize: "30px" }}
+              />
+            </h2>
             <Button onClick={handleClose} className="close-btn">
               X
             </Button>
@@ -101,7 +107,11 @@ export default function Cart() {
 
           <Box className="cart-body">
             {cartItems.length === 0 ? (
-              <div className="empty-text">Cart is empty!</div>
+              <div className="empty-text">
+                <AddShoppingCartIcon />
+                <br></br>
+                Ups! you have to shop!
+              </div>
             ) : (
               cartItems.map((item: CartItem) => {
                 const imagePath = `${serverApi}/${item.image}`;

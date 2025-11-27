@@ -9,7 +9,6 @@ import { useState } from "react";
 import MemberService from "./services/MemberService";
 import { sweetErrorHandling, sweetTopSuccessAlert } from "../lib/sweetAlert";
 import { Messages } from "../lib/config";
-import AuthenticationModal from "./components/auth";
 import ProductsPage from "./screens/productsPage";
 import UserProfilePage from "./screens/userPage";
 import HelpPage from "./screens/helpPage";
@@ -18,6 +17,7 @@ import "../css/navbar.css";
 import "../css/home.css";
 import "../css/footer.css";
 import "../css/order.css";
+import AuthenticationModal from "./components/footer/auth";
 
 function App() {
   const location = useLocation();

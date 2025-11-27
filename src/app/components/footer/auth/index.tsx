@@ -4,12 +4,12 @@ import Backdrop from "@mui/material/Backdrop";
 import Fade from "@mui/material/Fade";
 import { Button, Stack, TextField, Box, Typography, Link } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { T } from "../../../lib/types/common";
-import { Messages } from "../../../lib/config";
-import { LoginInput, MemberInput } from "../../../lib/types/member";
-import MemberService from "../../services/MemberService";
-import { sweetErrorHandling } from "../../../lib/sweetAlert";
-import { useGlobals } from "../../hooks/useGlobals";
+import { LoginInput, MemberInput } from "../../../../lib/types/member";
+import { Messages } from "../../../../lib/config";
+import MemberService from "../../../services/MemberService";
+import { sweetErrorHandling } from "../../../../lib/sweetAlert";
+import { useGlobals } from "../../../hooks/useGlobals";
+import { T } from "../../../../lib/types/common";
 
 interface AuthenticationModalProps {
   signupOpen: boolean;
@@ -194,7 +194,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                     variant="body2"
                     sx={{ mb: 1, color: "#666", fontSize: "13px" }}
                   >
-                    Email Address
+                    Name
                   </Typography>
                   <TextField
                     fullWidth

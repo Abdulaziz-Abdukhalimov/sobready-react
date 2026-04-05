@@ -18,6 +18,7 @@ import "../css/navbar.css";
 import "../css/home.css";
 import "../css/footer.css";
 import "../css/order.css";
+import "../css/mobile.css";
 import AuthenticationModal from "./components/footer/auth";
 
 function App() {

@@ -9,6 +9,7 @@ import { store } from "./app/store"; // Import Redux store;
 import theme from "./app/MaterialTheme/index";
 import { BrowserRouter as Router } from "react-router-dom";
 import ContextProvider from "./app/context/ContextProvider";
+import "./lib/i18n"; // Initialize i18n translations
 const rootElement = document.getElementById("root");
 if (!rootElement) {
   throw new Error("Root element not found");

@@ -16,6 +16,7 @@ import PausedOrders from "./PausedOrders";
 import ProccessOrders from "./ProccessOrders";
 import FinishedOrders from "./FinishedOrders";
 import { setFinishedOrders, setPausedOrders, setProccessOrders } from "./slice";
+import { useTranslation } from "react-i18next";
 
 const actionDispatch = (dispatch: Dispatch) => ({
   setPausedOrders: (data: Order[]) => dispatch(setPausedOrders(data)),
@@ -27,6 +28,7 @@ export default function OrdersPage() {
   const { orderBuilder, authMember } = useGlobals();
   const history = useHistory();
 
+  const { t } = useTranslation();
   if (!authMember) history.push("/");
   const { setPausedOrders, setProccessOrders, setFinishedOrders } =
     actionDispatch(useDispatch());
@@ -64,7 +66,7 @@ export default function OrdersPage() {
   return (
     <div className="order-page">
       <Container maxWidth="xl" className="order-container">
-        <h1 className="order-page-title">My Orders</h1>
+        <h1 className="order-page-title">{t("orders.title")}</h1>
 
         <Box className="order-tabs-wrapper">
           <Tabs
@@ -73,9 +75,9 @@ export default function OrdersPage() {
             className="order-tabs"
             variant="fullWidth"
           >
-            <Tab label="Pending Payment" value={"1"} />
-            <Tab label="In Process" value={"2"} />
-            <Tab label="Completed" value={"3"} />
+            <Tab label={t("orders.pending")} value={"1"} />
+            <Tab label={t("orders.processing")} value={"2"} />
+            <Tab label={t("orders.completed")} value={"3"} />
           </Tabs>
         </Box>
 

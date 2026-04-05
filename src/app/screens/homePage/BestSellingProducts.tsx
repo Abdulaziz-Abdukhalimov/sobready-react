@@ -1,4 +1,5 @@
 import { Box, Container, Stack } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { retrievePopularProducts } from "./selector";
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
@@ -20,11 +21,13 @@ const popularProductsRetriever = createSelector(
 
 export default function BestSellings() {
   const { popularProducts } = useSelector(popularProductsRetriever);
+  const { t } = useTranslation();
+
   return (
     <div className="best-selling">
       <Container>
         <Stack className="bestsell-section">
-          <Box className="best-title"> Best Selling Products</Box>
+          <Box className="best-title">{t("home.bestSelling")}</Box>
           <Stack className="best-cards">
             {popularProducts.length !== 0 ? (
               popularProducts.map((product) => {
@@ -69,7 +72,7 @@ export default function BestSellings() {
                 );
               })
             ) : (
-              <Box className="no-data">Products are not available now </Box>
+              <Box className="no-data">{t("home.noProducts")}</Box>
             )}
           </Stack>
         </Stack>

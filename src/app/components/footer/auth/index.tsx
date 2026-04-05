@@ -10,6 +10,9 @@ import MemberService from "../../../services/MemberService";
 import { sweetErrorHandling } from "../../../../lib/sweetAlert";
 import { useGlobals } from "../../../hooks/useGlobals";
 import { T } from "../../../../lib/types/common";
+import { useHistory } from "react-router-dom";
+import { MemberType } from "../../../../lib/enums/member.enum";
+import { useTranslation } from "react-i18next";
 
 interface AuthenticationModalProps {
   signupOpen: boolean;
@@ -34,6 +37,8 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   const [memberPhone, setMemberPhone] = useState<string>("");
   const [memberPassword, setMemberPassword] = useState<string>("");
   const { setAuthMember } = useGlobals();
+  const history = useHistory();
+  const { t } = useTranslation();
 
   /** HANDLERS **/
   const handleUserName = (e: T) => {
@@ -98,6 +103,11 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
 
       setAuthMember(result);
       handleLoginClose();
+
+      // Auto-redirect admin to dashboard
+      if (result.memberType === MemberType.ADMIN) {
+        history.push("/admin");
+      }
 
       // Reset fields
       setMemberNick("");
@@ -175,7 +185,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 }}
               >
                 <ArrowBackIcon sx={{ fontSize: 18 }} />
-                BACK
+                {t("common.back").toUpperCase()}
               </Link>
             </Box>
 
@@ -185,7 +195,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 variant="h5"
                 sx={{ mb: 4, fontWeight: 400, color: "#333" }}
               >
-                Sign In
+                {t("auth.signIn")}
               </Typography>
 
               <Stack spacing={2.5}>
@@ -194,7 +204,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                     variant="body2"
                     sx={{ mb: 1, color: "#666", fontSize: "13px" }}
                   >
-                    Name
+                    {t("auth.name")}
                   </Typography>
                   <TextField
                     fullWidth
@@ -224,7 +234,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                     variant="body2"
                     sx={{ mb: 1, color: "#666", fontSize: "13px" }}
                   >
-                    Password
+                    {t("auth.password")}
                   </Typography>
                   <TextField
                     fullWidth
@@ -268,7 +278,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                     },
                   }}
                 >
-                  Continue
+                  {t("auth.continue")}
                 </Button>
 
                 <Box sx={{ textAlign: "center" }}>
@@ -281,7 +291,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                       "&:hover": { color: "#333" },
                     }}
                   >
-                    Forgotten your password?
+                    {t("auth.forgotPassword")}
                   </Link>
                 </Box>
               </Stack>
@@ -298,7 +308,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                   variant="body2"
                   sx={{ color: "#666", mb: 1, fontSize: "14px" }}
                 >
-                  Don't have an online account?
+                  {t("auth.noAccount")}
                 </Typography>
                 <Link
                   onClick={switchToSignup}
@@ -310,7 +320,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                     "&:hover": { color: "#333" },
                   }}
                 >
-                  Register now
+                  {t("auth.registerNow")}
                 </Link>
               </Box>
             </Box>
@@ -420,7 +430,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 }}
               >
                 <ArrowBackIcon sx={{ fontSize: 18 }} />
-                BACK
+                {t("common.back").toUpperCase()}
               </Link>
             </Box>
 
@@ -430,7 +440,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                 variant="h5"
                 sx={{ mb: 4, fontWeight: 400, color: "#333" }}
               >
-                Register
+                {t("auth.register")}
               </Typography>
 
               <Stack spacing={2.5}>
@@ -439,7 +449,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                     variant="body2"
                     sx={{ mb: 1, color: "#666", fontSize: "13px" }}
                   >
-                    Username
+                    {t("user.username")}
                   </Typography>
                   <TextField
                     fullWidth
@@ -469,7 +479,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                     variant="body2"
                     sx={{ mb: 1, color: "#666", fontSize: "13px" }}
                   >
-                    Phone Number
+                    {t("auth.phoneNumber")}
                   </Typography>
                   <TextField
                     fullWidth
@@ -499,7 +509,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                     variant="body2"
                     sx={{ mb: 1, color: "#666", fontSize: "13px" }}
                   >
-                    Password
+                    {t("auth.password")}
                   </Typography>
                   <TextField
                     fullWidth
@@ -543,7 +553,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                     },
                   }}
                 >
-                  Continue
+                  {t("auth.continue")}
                 </Button>
               </Stack>
 
@@ -559,7 +569,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                   variant="body2"
                   sx={{ color: "#666", mb: 1, fontSize: "14px" }}
                 >
-                  Already have an account?
+                  {t("auth.haveAccount")}
                 </Typography>
                 <Link
                   onClick={switchToLogin}
@@ -571,7 +581,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
                     "&:hover": { color: "#333" },
                   }}
                 >
-                  Sign in
+                  {t("auth.signInLink")}
                 </Link>
               </Box>
             </Box>

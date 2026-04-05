@@ -2,9 +2,11 @@ import { Box, Container, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
   const authMember = null;
+  const { t } = useTranslation();
 
   return (
     <div className="footer">
@@ -21,10 +23,10 @@ export default function Footer() {
           >
             <Box className="brand-name">SEPHORA</Box>
             <Box className={"foot-desc-title"}>
-              Subscribe to Our Newsletter:
+              {t("footer.newsletter")}
             </Box>
             <Box className={"foot-desc-txt"}>
-              Receive Updates on New Arrivals and Special Promotions!
+              {t("footer.newsletterDesc")}
             </Box>
             <Box flexDirection={"row"} className={"find-us"}>
               <CallIcon sx={{ color: "white" }} />
@@ -44,10 +46,10 @@ export default function Footer() {
           <Stack flexDirection={"row"} className="footer-right">
             <Stack className="categories">
               <Box>
-                <Box className={"foot-category-title"}>Categories</Box>
+                <Box className={"foot-category-title"}>{t("footer.categories")}</Box>
                 <Box className={"foot-category"}>
                   <Typography>Fashion</Typography>
-                  <Typography>Jewelerry</Typography>
+                  <Typography>Jewelry</Typography>
                   <Typography>Sports</Typography>
                   <Typography>Electronics</Typography>
                   <Typography>Indoor</Typography>
@@ -56,36 +58,36 @@ export default function Footer() {
             </Stack>
             <Stack className="shopping">
               <Box>
-                <Box className={"foot-category-title"}>Shopping</Box>
+                <Box className={"foot-category-title"}>{t("footer.shopping")}</Box>
                 <Box className={"foot-category"}>
-                  <Typography>Payments</Typography>
-                  <Typography>Delivery Options</Typography>
-                  <Typography>Buyer Protection</Typography>
+                  <Typography>{t("footer.payments")}</Typography>
+                  <Typography>{t("footer.deliveryOptions")}</Typography>
+                  <Typography>{t("footer.buyerProtection")}</Typography>
                 </Box>
               </Box>
             </Stack>
             <Stack className="customer">
               <Box>
-                <Box className={"foot-category-title"}>Customer Care</Box>
+                <Box className={"foot-category-title"}>{t("footer.customerCare")}</Box>
                 <Box className={"foot-category"}>
-                  <Typography>Help Centre</Typography>
-                  <Typography>Term & Conditions</Typography>
-                  <Typography>Privacy Policy</Typography>
-                  <Typography>Returns & Refund</Typography>
-                  <Typography>Survey & Feedback</Typography>
+                  <Typography>{t("footer.helpCentre")}</Typography>
+                  <Typography>{t("footer.termsConditions")}</Typography>
+                  <Typography>{t("footer.privacyPolicy")}</Typography>
+                  <Typography>{t("footer.returnsRefund")}</Typography>
+                  <Typography>{t("footer.surveyFeedback")}</Typography>
                 </Box>
               </Box>
             </Stack>
 
             <Stack className="pages">
               <Box>
-                <Box className={"foot-category-title"}>Pages</Box>
+                <Box className={"foot-category-title"}>{t("footer.pages")}</Box>
                 <Box className={"foot-category"}>
-                  <Link to={"/"}>Home</Link>
-                  <Link to={"/products"}>Shop</Link>
-                  {authMember && <Link to="/orders">Orders</Link>}
-                  <Link to="/help">Help</Link>
-                  <Link to="/help">Contact Us</Link>
+                  <Link to={"/"}>{t("nav.home")}</Link>
+                  <Link to={"/products"}>{t("nav.shop")}</Link>
+                  {authMember && <Link to="/orders">{t("nav.orders")}</Link>}
+                  <Link to="/help">{t("nav.help")}</Link>
+                  <Link to="/help">{t("footer.contactUs")}</Link>
                 </Box>
               </Box>
             </Stack>
@@ -96,7 +98,7 @@ export default function Footer() {
           sx={{ mt: "80px" }}
         ></Stack>
         <Stack className={"copyright-txt"}>
-          © 2025 Aromatica Inc. All rights reserved
+          {t("footer.copyright")}
         </Stack>
       </Container>
     </div>

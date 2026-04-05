@@ -12,6 +12,7 @@ import { Messages } from "../lib/config";
 import ProductsPage from "./screens/productsPage";
 import UserProfilePage from "./screens/userPage";
 import HelpPage from "./screens/helpPage";
+import AdminPage from "./screens/adminPage";
 import "../css/app.css";
 import "../css/navbar.css";
 import "../css/home.css";
@@ -25,6 +26,9 @@ function App() {
   const [signupOpen, setSignupOpen] = useState<boolean>(false);
   const [loginOpen, setLoginOpen] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+
+  // Check if current page is admin — hide navbar/footer for admin dashboard
+  const isAdminPage = location.pathname.startsWith("/admin");
 
   /* HADNLERS */
   const handleSignupClose = () => setSignupOpen(false);
@@ -51,26 +55,35 @@ function App() {
 
   return (
     <>
-      {location.pathname === "/" ? (
-        <HomeNavbar
-          setSignupOpen={setSignupOpen}
-          setLoginOpen={setLoginOpen}
-          anchorEl={anchorEl}
-          handleLogoutClick={handleLogoutClick}
-          handleCloseLogout={handleCloseLogout}
-          handleLogoutRequest={handleLogoutRequest}
-        />
-      ) : (
-        <OtherNavbar
-          setSignupOpen={setSignupOpen}
-          setLoginOpen={setLoginOpen}
-          anchorEl={anchorEl}
-          handleLogoutClick={handleLogoutClick}
-          handleCloseLogout={handleCloseLogout}
-          handleLogoutRequest={handleLogoutRequest}
-        />
+      {/* Hide navbar and footer on admin pages — admin has its own sidebar */}
+      {!isAdminPage && (
+        <>
+          {location.pathname === "/" ? (
+            <HomeNavbar
+              setSignupOpen={setSignupOpen}
+              setLoginOpen={setLoginOpen}
+              anchorEl={anchorEl}
+              handleLogoutClick={handleLogoutClick}
+              handleCloseLogout={handleCloseLogout}
+              handleLogoutRequest={handleLogoutRequest}
+            />
+          ) : (
+            <OtherNavbar
+              setSignupOpen={setSignupOpen}
+              setLoginOpen={setLoginOpen}
+              anchorEl={anchorEl}
+              handleLogoutClick={handleLogoutClick}
+              handleCloseLogout={handleCloseLogout}
+              handleLogoutRequest={handleLogoutRequest}
+            />
+          )}
+        </>
       )}
+
       <Switch>
+        <Route path="/admin">
+          <AdminPage />
+        </Route>
         <Route path="/products">
           <ProductsPage />
         </Route>
@@ -87,7 +100,8 @@ function App() {
           <HomePage />
         </Route>
       </Switch>
-      <Footer />
+
+      {!isAdminPage && <Footer />}
 
       <AuthenticationModal
         signupOpen={signupOpen}

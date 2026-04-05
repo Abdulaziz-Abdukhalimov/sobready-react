@@ -13,6 +13,8 @@ import { useGlobals } from "../../hooks/useGlobals";
 import { serverApi } from "../../../lib/config";
 import Cart from "./Cart";
 import WishList from "./Like";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 interface OtherNavbarProps {
   setSignupOpen: (isOpen: boolean) => void;
@@ -32,6 +34,8 @@ export default function OtherNavbar(props: OtherNavbarProps) {
     handleLogoutRequest,
   } = props;
   const { authMember } = useGlobals();
+  const { t } = useTranslation();
+
   return (
     <div className="other-navbar">
       <Container sx={{ mt: "55px", height: "642pxpx" }}>
@@ -53,37 +57,40 @@ export default function OtherNavbar(props: OtherNavbarProps) {
             alignItems={"center"}
           >
             <Box className={"hover-line"}>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/">{t("nav.home")}</NavLink>
             </Box>
             <Box className={"hover-line"}>
               <NavLink to="/products" activeClassName={"underline"}>
-                Shop
+                {t("nav.shop")}
               </NavLink>
             </Box>
             {authMember ? (
               <Box className={"hover-line"}>
                 <NavLink to="/orders" activeClassName={"underline"}>
-                  Orders
+                  {t("nav.orders")}
                 </NavLink>
               </Box>
             ) : null}
             {authMember ? (
               <Box className={"hover-line"}>
                 <NavLink to="/member-page" activeClassName={"underline"}>
-                  My Page
+                  {t("nav.myPage")}
                 </NavLink>
               </Box>
             ) : null}
             <Box className={"hover-line"}>
               <NavLink to="/help" activeClassName={"underline"}>
-                Help
+                {t("nav.help")}
               </NavLink>
             </Box>
 
             {/* Wishlist */}
             <WishList />
-            {/* cart */}
+            {/* Cart */}
             <Cart />
+            {/* Language Switcher */}
+            <LanguageSwitcher />
+
             {!authMember ? (
               <Box>
                 <Button
@@ -92,7 +99,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
                   className="login-button"
                   onClick={() => setLoginOpen(true)}
                 >
-                  Login
+                  {t("nav.login")}
                 </Button>
               </Box>
             ) : (
@@ -147,13 +154,13 @@ export default function OtherNavbar(props: OtherNavbarProps) {
                 <ListItemIcon>
                   <Logout fontSize="small" style={{ color: "blue" }} />
                 </ListItemIcon>
-                Logout
+                {t("nav.logout")}
               </MenuItem>
               <MenuItem>
                 <ListItemIcon>
                   <Logout fontSize="small" style={{ color: "blue" }} />
                 </ListItemIcon>
-                My Page
+                {t("nav.myPage")}
               </MenuItem>
             </Menu>
           </Stack>

@@ -22,9 +22,8 @@ const actionDispatch = (dispatch: Dispatch) => ({
 });
 
 export function HomePage() {
-  const { setPopularProducts, setNewProducts, setTopUsers } = actionDispatch(
-    useDispatch()
-  );
+  const { setPopularProducts, setNewProducts, setTopUsers } =
+    actionDispatch(useDispatch());
 
   useEffect(() => {
     //Backend server data fetch
@@ -33,8 +32,8 @@ export function HomePage() {
       .getProducts({
         page: 1,
         limit: 4,
-        order: "productViews",
-        productType: ProductType.EAU_DE_PARFUM,
+        order: "productLikes",
+        productType: ProductType.EAU_DE_TOILETTE,
       })
       .then((data) => {
         setPopularProducts(data);

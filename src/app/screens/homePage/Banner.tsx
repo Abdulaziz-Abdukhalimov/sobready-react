@@ -35,8 +35,10 @@ export default function Banner() {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: "100vw",
-            height: "120%",
+            width: "177.78vh", /* 16:9 = always wide enough to cover height */
+            height: "56.25vw",  /* 16:9 = always tall enough to cover width */
+            minWidth: "100%",
+            minHeight: "100%",
             pointerEvents: "none",
             border: "none",
           }}
